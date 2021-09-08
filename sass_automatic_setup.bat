@@ -1,16 +1,8 @@
-
-
 @ECHO OFF 
-:: This batch script creates all the necessary files and folders for your next SASS project
-:: Inspired by @abhagsain https://gist.github.com/abhagsain 
-:: https://gist.github.com/rveitch/84cea9650092119527bc#gistcomment-3040049
+:: This batch file creates all necessary files for SASS
+:: Inspired by @abhagsain (https://gist.github.com/rveitch/84cea9650092119527bc#gistcomment-3040049)
+:: And updated with SASS Guidelines : https://sass-guidelin.es/#architecture
 
-:: How to use it ?
-:: Open your favourite text editor
-:: Copy/paste this code in it
-:: Save the file with a .bat extension, e.g. sass_setup.bat
-:: Paste the file at the base of your project and simply execute it.
-:: It will automatically create a folder named "sass" with all the subfolders and (empty) files you need in it.
 
 TITLE SASS Automatic Setup
 
@@ -38,23 +30,11 @@ cd sass
 ECHO Creating SASS Subfolders...
 
 ECHO/
-:: Abstract folder
-if exist abstract echo - abstract folder already exists
-if not exist abstract (
-    mkdir abstract
-    echo + Abstract folder creation: Done.
-)
-:: Pages folder
-if exist pages echo - pages folder already exists
-if not exist pages (
-    mkdir pages
-    echo + Pages folder creation: Done.
-)
-:: Layout folder
-if exist layout echo - layout folder already exists
-if not exist layout (
-    mkdir layout
-    echo + Layout folder creation: Done.
+:: Abstracts folder
+if exist abstracts echo - abstracts folder already exists
+if not exist abstracts (
+    mkdir abstracts
+    echo + Abstracts folder creation: Done.
 )
 :: Base folder
 if exist base echo - base folder already exists
@@ -68,18 +48,50 @@ if not exist components (
     mkdir components
     echo + Components folder creation: Done.
 )
+:: Layout folder
+if exist layout echo - layout folder already exists
+if not exist layout (
+    mkdir layout
+    echo + Layout folder creation: Done.
+)
+:: Pages folder
+if exist pages echo - pages folder already exists
+if not exist pages (
+    mkdir pages
+    echo + Pages folder creation: Done.
+)
+:: Themes folder
+if exist pages echo - themes folder already exists
+if not exist themes (
+    mkdir themes
+    echo + Themes folder creation: Done.
+)
+:: Vendors folder 
+if exist vendors echo - vendors folder already exists
+if not exist vendors (
+    mkdir vendors
+    echo + vendors folder creation: Done.
+)
+
 
 ECHO/
-ECHO Moving to Abstract...
-cd abstract
-ECHO\
-ECHO Creating Abstract files
+ECHO Moving to Abstracts...
+cd abstracts
+ECHO/
+
+ECHO Creating Abstracts files
 ECHO -------------------
-:: _function.scss
-if exist _function.scss echo - _function.scss already exists
-if not exist _function.scss (
-    type nul >_function.scss
-    ECHO + _function.scss created
+:: _variables.scss
+if exist _variables.scss echo - _variables.scss already exists
+if not exist _variables.scss (
+    type nul >_variables.scss
+    ECHO + _variables.scss created
+)
+:: _functions.scss
+if exist _functions.scss echo - _functions.scss already exists
+if not exist _functions.scss (
+    type nul >_functions.scss
+    ECHO + _functions.scss created
 )
 :: _mixins.scss
 if exist _mixins.scss echo - _mixins.scss already exists
@@ -87,43 +99,217 @@ if not exist _mixins.scss (
     type nul >_mixins.scss
     ECHO + _mixins.scss created
 )
-:: _variables.scss
-if exist _variables.scss echo - _variables.scss already exists
-if not exist _variables.scss (
-    type nul >_variables.scss
-    ECHO + _variables.scss created
+:: _placeholders.scss
+if exist _placeholders.scss echo - _placeholders.scss already exists
+if not exist _placeholders.scss (
+    type nul >_placeholders.scss
+    ECHO + _placeholders.scss created
 )
 ECHO -------------------
+
 
 ECHO/
 ECHO Moving to Base
 cd ..
 cd base
+ECHO/
 
-ECHO Creating base files
+ECHO Creating Base files
 ECHO -------------------
-if exist _animations.scss echo - _animations.scss already exists
-if not exist _animations.scss (
-    type nul >_animations.scss
-    ECHO + _animations.scss created
+:: _reset.scss // Reset/normalize
+if exist _reset.scss echo - _reset.scss already exists
+if not exist _reset.scss (
+    type nul >_reset.scss
+    ECHO + _reset.scss created
 )
+:: _typography.scss
 if exist _typography.scss echo - _typography.scss already exists
 if not exist _typography.scss (
     type nul >_typography.scss
     ECHO + _typography.scss created
 )
-if exist _utilities.scss echo - _utilities.scss already exists
-if not exist _utilities.scss (
-    type nul >_utilities.scss
-    ECHO + _utilities.scss created
+ECHO -------------------
+
+
+ECHO/
+ECHO Moving to Components
+cd ..
+cd components
+ECHO/
+
+ECHO Creating Components files
+ECHO -------------------
+:: _buttons.scss
+if exist _buttons.scss echo - _buttons.scss already exists
+if not exist _buttons.scss (
+    type nul >_buttons.scss
+    ECHO + _buttons.scss created
 )
-if exist _base.scss echo - _base.scss already exists
-if not exist _base.scss (
-    type nul >_base.scss
-    ECHO + _base.scss created
+:: _carousel.scss
+if exist _carousel.scss echo - _carousel.scss already exists
+if not exist _carousel.scss (
+    type nul >_carousel.scss
+    ECHO + _carousel.scss created
+)
+:: _cover.scss
+if exist _cover.scss echo - _cover.scss already exists
+if not exist _cover.scss (
+    type nul >_cover.scss
+    ECHO + _cover.scss created
+)
+:: _dropdown.scss
+if exist _dropdown.scss echo - _dropdown.scss already exists
+if not exist _dropdown.scss (
+    type nul >_dropdown.scss
+    ECHO + _dropdown.scss created
 )
 ECHO -------------------
 
+
+ECHO/
+ECHO Moving to Layout
+cd ..
+cd layout
+ECHO/
+
+ECHO Creating Layout files
+ECHO -------------------
+:: _navigation.scss
+if exist _navigation.scss echo - _navigation.scss already exists
+if not exist _navigation.scss (
+    type nul >_navigation.scss
+    ECHO + _navigation.scss created
+)
+:: _grid.scss
+if exist _grid.scss echo - _grid.scss already exists
+if not exist _grid.scss (
+    type nul >_grid.scss
+    ECHO + _grid.scss created
+)
+:: _header.scss
+if exist _header.scss echo - _header.scss already exists
+if not exist _header.scss (
+    type nul >_header.scss
+    ECHO + _header.scss created
+)
+:: _footer.scss
+if exist _footer.scss echo - _footer.scss already exists
+if not exist _footer.scss (
+    type nul >_footer.scss
+    ECHO + _footer.scss created
+)
+:: _sidebar.scss
+if exist _sidebar.scss echo - _sidebar.scss already exists
+if not exist _sidebar.scss (
+    type nul >_sidebar.scss
+    ECHO + _sidebar.scss created
+)
+:: _forms.scss
+if exist _forms.scss echo - _forms.scss already exists
+if not exist _forms.scss (
+    type nul >_forms.scss
+    ECHO + _forms.scss created
+)
+ECHO -------------------
+
+
+ECHO/
+ECHO Moving to Pages
+cd ..
+cd pages
+ECHO/
+
+ECHO Creating Pages files
+ECHO -------------------
+:: _home.scss
+if exist _home.scss echo - _home.scss already exists
+if not exist _home.scss (
+    type nul >_home.scss
+    ECHO + _home.scss created
+)
+:: _contact.scss
+if exist _contact.scss echo - _contact.scss already exists
+if not exist _contact.scss (
+    type nul >_contact.scss
+    ECHO + _contact.scss created
+)
+ECHO -------------------
+
+
+ECHO/
+ECHO Moving to Themes
+cd ..
+cd themes
+ECHO/
+
+ECHO Creating Themes files
+ECHO -------------------
+:: _theme.scss
+if exist _theme.scss echo - _theme.scss already exists
+if not exist _theme.scss (
+    type nul >_theme.scss
+    ECHO + _theme.scss created
+)
+:: _admin.scss
+if exist _admin.scss echo - _admin.scss already exists
+if not exist _admin.scss (
+    type nul >_admin.scss
+    ECHO + _admin.scss created
+)
+:: _light.scss
+if exist _light.scss echo - _light.scss already exists
+if not exist _light.scss (
+    type nul >_light.scss
+    ECHO + _light.scss created
+)
+:: _dark.scss
+if exist _dark.scss echo - _dark.scss already exists
+if not exist _dark.scss (
+    type nul >_dark.scss
+    ECHO + _dark.scss created
+)
+ECHO -------------------
+
+
+ECHO/
+ECHO Moving to Vendors
+cd ..
+cd vendors
+ECHO/
+
+ECHO Creating Vendors files
+ECHO -------------------
+:: _bootstrap.scss
+if exist _bootstrap.scss echo - _bootstrap.scss already exists
+if not exist _bootstrap.scss (
+    type nul >_bootstrap.scss
+    ECHO + _bootstrap.scss created
+)
+:: _jquery-ui.scss
+if exist _jquery-ui.scss echo - _jquery-ui.scss already exists
+if not exist _jquery-ui.scss (
+    type nul >_jquery-ui.scss
+    ECHO + _jquery-ui.scss created
+)
+ECHO -------------------
+
+
+ECHO/
+ECHO Moving to main folder
+cd ..
+ECHO/
+
+ECHO Creating main.scss file
+ECHO -------------------
+:: main.scss
+if exist main.scss echo - main.scss already exists
+if not exist main.scss (
+    type nul >main.scss
+    ECHO + main.scss created
+)
+ECHO -------------------
+
+ECHO/
 ECHO/
 ECHO You're all set up! Enjoy
 ECHO/
