@@ -1,8 +1,10 @@
 @ECHO OFF 
+setlocal EnableDelayedExpansion
+
 :: This batch file creates all necessary files for SASS
 :: Inspired by @abhagsain (https://gist.github.com/rveitch/84cea9650092119527bc#gistcomment-3040049)
 :: And updated with SASS Guidelines : https://sass-guidelin.es/#architecture
-
+:: Timer made by @Aacini (https://stackoverflow.com/users/778560/aacini) Source: https://stackoverflow.com/a/9935540
 
 TITLE SASS Automatic Setup
 
@@ -13,6 +15,8 @@ ECHO/
 ECHO This program automatically creates all the files and folders you need for your SASS project.
 ECHO/
 PAUSE
+
+set "startTime=%time: =0%"
 ECHO Please wait... Creating files and folders
 
 ECHO/
@@ -311,7 +315,7 @@ ECHO -------------------
 
 ECHO/
 ECHO/
-ECHO You're all set up! Enjoy
+ECHO You're all set up. Yay
 ECHO/
 ECHO Psst... Before you go :
 ECHO Use below imports in your main inde.scss file :
@@ -321,4 +325,23 @@ ECHO    @import "./layout/header";
 ECHO    @import "./base/animations";
 ECHO    @import "./base/typography";
 ECHO    @import "./components/button";
+
+
+set "endTime=%time: =0%"
+
+
+
+rem Get elapsed time:
+set "end=!endTime:%time:~8,1%=%%100)*100+1!"  &  set "start=!startTime:%time:~8,1%=%%100)*100+1!"
+set /A "elap=((((10!end:%time:~2,1%=%%100)*60+1!%%100)-((((10!start:%time:~2,1%=%%100)*60+1!%%100), elap-=(elap>>31)*24*60*60*100"
+
+rem Convert elapsed time to HH:MM:SS:CC format:
+set /A "cc=elap%%100+100,elap/=100,ss=elap%%60+100,elap/=60,mm=elap%%60+100,hh=elap/60+100"
+
+::echo Start:    %startTime%
+:: echo End:      %endTime%
+ECHO/
+echo Executed in:  %hh:~1%%time:~2,1%%mm:~1%%time:~2,1%%ss:~1%%time:~8,1%%cc:~1%
+ECHO/
+
 PAUSE
