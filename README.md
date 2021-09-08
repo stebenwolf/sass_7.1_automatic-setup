@@ -22,4 +22,4 @@ This batch script creates all the necessary files and folders for your next SASS
 
 
 
-# Feel free to make any comment! Hope this helps :)
+## Feel free to make any comment! Hope this helps :)
