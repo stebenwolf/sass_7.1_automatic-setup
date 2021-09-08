@@ -19,7 +19,7 @@ All files are empty by default
 
 ## What if I want to add some folders or files ?
 
-To create a new folder, just paste the following code wherever you need:
+To create a new folder, just paste the following code wherever you need and replace the <> with the name you want:
 
 ```
 :: <folder name> folder
